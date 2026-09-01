@@ -145,19 +145,25 @@
   .btn-ghost:hover { border-color: var(--brass); }
 
   .hero-panel {
-    border: 1px solid var(--navy-line); border-radius: 6px; padding: 26px 24px;
+    border: 1px solid var(--navy-line); border-radius: 10px;
     background: linear-gradient(180deg, rgba(18,29,43,0.92), rgba(22,33,47,0.92));
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px); overflow: hidden;
   }
-  .hero-panel dl { display: grid; gap: 16px; }
-  .hero-panel .row { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--navy-line); padding-bottom: 14px; }
-  .hero-panel .row:last-child { border-bottom: none; padding-bottom: 0; }
-  .hero-panel dt { color: var(--silver-dim); font-size: 0.84rem; }
-  .hero-panel dd { color: var(--silver-bright); font-size: 0.9rem; text-align: right; font-family: var(--font-mono); }
+  .hp-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .hp-item { padding: 22px 24px; border-bottom: 1px solid var(--navy-line); border-right: 1px solid var(--navy-line); }
+  .hp-item:nth-child(2n) { border-right: none; }
+  .hp-item:nth-last-child(-n+2) { border-bottom: none; }
+  .hp-label {
+    display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--silver-dim); margin-bottom: 9px;
+  }
+  .hp-value { display: block; font-family: var(--font-display); font-size: 1.08rem; font-weight: 500; color: var(--silver-bright); line-height: 1.25; }
 
   @media (max-width: 860px) {
     .hero-content { grid-template-columns: 1fr; padding: 96px 0 56px; }
     .hero-panel { order: -1; }
+    .hp-grid { grid-template-columns: 1fr; }
+    .hp-item { border-right: none !important; }
   }
 
   /* ---------- Section shell ---------- */
@@ -196,6 +202,20 @@
   }
   .fleet-card .tag.available { border-color: #7db894; color: #a9d7ba; }
   .fleet-loading, .fleet-empty { color: var(--silver-dim); font-family: var(--font-mono); font-size: 0.85rem; padding: 40px 28px; }
+
+  /* ---------- Stock grid (véhicules disponibles) ---------- */
+  .stock-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 8px; }
+  .stock-card {
+    position: relative; height: 380px; border-radius: 10px; overflow: hidden;
+    border: 1px solid var(--navy-line); background: var(--navy-panel);
+    box-shadow: 0 20px 40px -25px rgba(0,0,0,0.6);
+  }
+  .stock-card img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
+  .stock-empty {
+    border: 1px dashed var(--navy-line); border-radius: 10px; padding: 36px 28px;
+    color: var(--silver-muted); font-size: 0.96rem;
+  }
+  .stock-empty a { color: var(--brass-bright); text-decoration: underline; text-underline-offset: 3px; }
   .fleet-info {
     position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 22px 24px;
     background: linear-gradient(180deg, transparent, rgba(6,10,16,0.94) 65%);
@@ -331,6 +351,7 @@
     </a>
     <nav class="links">
       <a href="#services">Services</a>
+      <a href="#stock">En stock</a>
       <a href="#fleet">Véhicules cédés</a>
       <a href="#process">Démarche</a>
       <a href="#contact">Contact</a>
@@ -350,16 +371,16 @@
         <p class="hero-lede">C.C.C accompagne particuliers et professionnels dans l'achat, la revente, le dépôt-vente, l'import et la recherche personnalisée de véhicules — avec un seul interlocuteur, du premier échange à la remise des clés.</p>
         <div class="hero-actions">
           <a class="btn-primary" href="#contact">Discuter de mon projet</a>
-          <a class="btn-ghost" href="#fleet">Voir les véhicules cédés</a>
+          <a class="btn-ghost" href="#stock">Voir les véhicules en stock</a>
         </div>
       </div>
       <div class="hero-panel">
-        <dl>
-          <div class="row"><dt>Fondateur</dt><dd>Clément Loucel</dd></div>
-          <div class="row"><dt>Interlocuteur</dt><dd>unique, de A à Z</dd></div>
-          <div class="row"><dt>Basé à</dt><dd>Région niçoise</dd></div>
-          <div class="row"><dt>Zone d'intervention</dt><dd>Toute la France</dd></div>
-        </dl>
+        <div class="hp-grid">
+          <div class="hp-item"><span class="hp-label">Fondateur</span><span class="hp-value">Clément Loucel</span></div>
+          <div class="hp-item"><span class="hp-label">Interlocuteur</span><span class="hp-value">Unique, de A à Z</span></div>
+          <div class="hp-item"><span class="hp-label">Basé à</span><span class="hp-value">Région niçoise</span></div>
+          <div class="hp-item"><span class="hp-label">Zone d'intervention</span><span class="hp-value">Toute la France</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -403,10 +424,20 @@
     </div>
   </section>
 
+  <section id="stock" class="wrap">
+    <div class="section-head reveal">
+      <h2>Actuellement disponibles</h2>
+      <p>Les véhicules en stock chez C.C.C aujourd'hui. Cliquez sur une photo pour l'agrandir.</p>
+    </div>
+    <div class="stock-grid" id="stockGrid">
+      <!-- Rendu automatiquement depuis data/vehicles.json (statut "Disponible") -->
+    </div>
+  </section>
+
   <section id="fleet">
     <div class="wrap fleet-intro">
       <div class="section-head reveal" style="margin-bottom: 0;">
-        <h2>Quatre ventes, quatre profils différents</h2>
+        <h2>Des ventes, des profils différents</h2>
         <p>Un aperçu de véhicules récemment accompagnés par C.C.C — de la citadine premium à la routière. Faites défiler pour les découvrir, cliquez pour agrandir.</p>
       </div>
     </div>
@@ -699,7 +730,7 @@
   }
 
   function wireFleetCards() {
-    fleetCards = Array.prototype.slice.call(document.querySelectorAll('.fleet-card'));
+    fleetCards = Array.prototype.slice.call(track.querySelectorAll('.fleet-card'));
     fleetCards.forEach(function (card) {
       var images = card.getAttribute('data-images').split(',');
       var captions = card.getAttribute('data-captions').split(',');
@@ -720,11 +751,44 @@
 
   function renderFleet(vehicles) {
     if (!vehicles || !vehicles.length) {
-      track.innerHTML = '<p class="fleet-empty">Aucun véhicule à afficher pour le moment.</p>';
+      track.innerHTML = '<p class="fleet-empty">Aucun véhicule cédé à afficher pour le moment.</p>';
       return;
     }
     track.innerHTML = vehicles.map(buildCardHtml).join('');
     wireFleetCards();
+  }
+
+  function buildStockCardHtml(v) {
+    var gallery = (v.gallery && v.gallery.length) ? v.gallery : [{ src: v.mainImage, caption: v.name }];
+    var images = gallery.map(function (g) { return g.src; }).join(',');
+    var captions = gallery.map(function (g) { return g.caption || v.name; }).join(',');
+    return '' +
+      '<article class="stock-card" data-images="' + escapeHtml(images) + '" data-captions="' + escapeHtml(captions) + '">' +
+        '<span class="tag available">Disponible</span>' +
+        '<img src="' + escapeHtml(v.mainImage) + '" alt="' + escapeHtml(v.name) + '" loading="lazy">' +
+        '<div class="fleet-info">' +
+          '<h3>' + escapeHtml(v.name) + '</h3>' +
+          '<p>' + escapeHtml(v.tagline || '') + '</p>' +
+        '</div>' +
+      '</article>';
+  }
+
+  function renderStock(vehicles) {
+    var stockGrid = document.getElementById('stockGrid');
+    if (!vehicles || !vehicles.length) {
+      stockGrid.innerHTML = '<div class="stock-empty">Aucun véhicule en stock pour le moment. <a href="#contact">Contactez C.C.C</a> pour être informé des prochaines arrivées.</div>';
+      return;
+    }
+    stockGrid.innerHTML = vehicles.map(buildStockCardHtml).join('');
+    stockGrid.querySelectorAll('.stock-card').forEach(function (card) {
+      var images = card.getAttribute('data-images').split(',');
+      var captions = card.getAttribute('data-captions').split(',');
+      card.querySelector('img').addEventListener('click', function (e) {
+        e.preventDefault();
+        openLightbox(images, captions, 0);
+      });
+      if ('IntersectionObserver' in window) revealObserver.observe(card);
+    });
   }
 
   // Secours si data/vehicles.json est introuvable (ex: ouverture du fichier en local)
@@ -753,10 +817,18 @@
   ];
 
   track.innerHTML = '<p class="fleet-loading">Chargement des véhicules…</p>';
+  document.getElementById('stockGrid').innerHTML = '<p class="fleet-loading">Chargement…</p>';
   fetch('data/vehicles.json', { cache: 'no-store' })
     .then(function (res) { if (!res.ok) throw new Error('fetch failed'); return res.json(); })
-    .then(function (data) { renderFleet(data.vehicles || []); })
-    .catch(function () { renderFleet(FALLBACK_VEHICLES); });
+    .then(function (data) { splitAndRender(data.vehicles || []); })
+    .catch(function () { splitAndRender(FALLBACK_VEHICLES); });
+
+  function splitAndRender(vehicles) {
+    var stock = vehicles.filter(function (v) { return v.status === 'Disponible'; });
+    var sold = vehicles.filter(function (v) { return v.status !== 'Disponible'; });
+    renderStock(stock);
+    renderFleet(sold);
+  }
 
   document.getElementById('lbClose').addEventListener('click', closeLightbox);
   document.getElementById('lbPrev').addEventListener('click', function () {
