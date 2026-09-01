@@ -6,9 +6,18 @@
       "status": "Cédé",
       "mainImage": "assets/IMG_4755.jpg",
       "gallery": [
-        { "src": "assets/IMG_4755.jpg", "caption": "MINI Cooper — trois quarts avant" },
-        { "src": "assets/IMG_4753.jpg", "caption": "MINI Cooper — face avant" },
-        { "src": "assets/IMG_4746.jpg", "caption": "MINI Cooper — vue arrière" }
+        {
+          "src": "assets/IMG_4755.jpg",
+          "caption": "MINI Cooper — trois quarts avant"
+        },
+        {
+          "src": "assets/IMG_4753.jpg",
+          "caption": "MINI Cooper — face avant"
+        },
+        {
+          "src": "assets/IMG_4746.jpg",
+          "caption": "MINI Cooper — vue arrière"
+        }
       ]
     },
     {
@@ -17,9 +26,18 @@
       "status": "Cédé",
       "mainImage": "assets/IMG_2662.jpg",
       "gallery": [
-        { "src": "assets/IMG_2662.jpg", "caption": "BMW 320Ci — trois quarts avant" },
-        { "src": "assets/IMG_2683.jpg", "caption": "BMW 320Ci — trois quarts arrière" },
-        { "src": "assets/IMG_2672.jpg", "caption": "BMW 320Ci — intérieur M Sport" }
+        {
+          "src": "assets/IMG_2662.jpg",
+          "caption": "BMW 320Ci — trois quarts avant"
+        },
+        {
+          "src": "assets/IMG_2683.jpg",
+          "caption": "BMW 320Ci — trois quarts arrière"
+        },
+        {
+          "src": "assets/IMG_2672.jpg",
+          "caption": "BMW 320Ci — intérieur M Sport"
+        }
       ]
     },
     {
@@ -28,10 +46,22 @@
       "status": "Cédé",
       "mainImage": "assets/IMG_2112.jpg",
       "gallery": [
-        { "src": "assets/IMG_2112.jpg", "caption": "Renault Mégane GT — trois quarts avant" },
-        { "src": "assets/IMG_2113.jpg", "caption": "Renault Mégane GT — face avant" },
-        { "src": "assets/IMG_2133.jpg", "caption": "Renault Mégane GT — vue arrière" },
-        { "src": "assets/IMG_2123.jpg", "caption": "Renault Mégane GT — intérieur" }
+        {
+          "src": "assets/IMG_2112.jpg",
+          "caption": "Renault Mégane GT — trois quarts avant"
+        },
+        {
+          "src": "assets/IMG_2113.jpg",
+          "caption": "Renault Mégane GT — face avant"
+        },
+        {
+          "src": "assets/IMG_2133.jpg",
+          "caption": "Renault Mégane GT — vue arrière"
+        },
+        {
+          "src": "assets/IMG_2123.jpg",
+          "caption": "Renault Mégane GT — intérieur"
+        }
       ]
     },
     {
@@ -40,9 +70,29 @@
       "status": "Cédé",
       "mainImage": "assets/IMG_4578.jpg",
       "gallery": [
-        { "src": "assets/IMG_4578.jpg", "caption": "BMW F800ST — trois quarts avant" },
-        { "src": "assets/IMG_4575.jpg", "caption": "BMW F800ST — vue avant" },
-        { "src": "assets/IMG_4581.jpg", "caption": "BMW F800ST — détail échappement" }
+        {
+          "src": "assets/IMG_4578.jpg",
+          "caption": "BMW F800ST — trois quarts avant"
+        },
+        {
+          "src": "assets/IMG_4575.jpg",
+          "caption": "BMW F800ST — vue avant"
+        },
+        {
+          "src": "assets/IMG_4581.jpg",
+          "caption": "BMW F800ST — détail échappement"
+        }
+      ]
+    },
+    {
+      "status": "Cédé",
+      "name": "KIA RIO",
+      "tagline": "IV (2) 1.2 DPI 84 4CV ACTIVE- 2021- 70 900 kms-10 490 €. Recherche personnalisée. ",
+      "mainImage": "/assets/uploads/img_4288.jpeg",
+      "gallery": [
+        {
+          "src": "/assets/uploads/img_4305.jpeg"
+        }
       ]
     }
   ]
