@@ -22,8 +22,8 @@
     },
     {
       "name": "BMW 320Ci Coupé",
-      "tagline": "Coupé E46, finition M Sport, sourcing et vérification complète.",
-      "status": "Cédé",
+      "tagline": "E46. Finition M Sport, sourcing et vérification complète. 98 500kms - 12 990€",
+      "status": "Disponible",
       "mainImage": "assets/IMG_2662.jpg",
       "gallery": [
         {
@@ -66,7 +66,7 @@
     },
     {
       "name": "BMW F800ST",
-      "tagline": "Routière sportive, dépôt-vente incluant remise en état.",
+      "tagline": "Routière sportive, dépôt-vente incluant remise en état. 82 500kms -2 490€",
       "status": "Disponible",
       "mainImage": "assets/IMG_4578.jpg",
       "gallery": [
@@ -87,7 +87,7 @@
     {
       "status": "Cédé",
       "name": "KIA RIO",
-      "tagline": "IV (2) 1.2 DPI 84 4CV ACTIVE- 2021- 70 900 kms-10 490 €. Recherche personnalisée. ",
+      "tagline": "IV (2) 1.2 DPI 84 4CV ACTIVE - 2021 - 70 900 kms- Recherche personnalisée. ",
       "mainImage": "/assets/uploads/img_4288.jpeg",
       "gallery": [
         {
