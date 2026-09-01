@@ -145,25 +145,45 @@
   .btn-ghost:hover { border-color: var(--brass); }
 
   .hero-panel {
-    border: 1px solid var(--navy-line); border-radius: 10px;
-    background: linear-gradient(180deg, rgba(18,29,43,0.92), rgba(22,33,47,0.92));
-    backdrop-filter: blur(6px); overflow: hidden;
+    position: relative; border-radius: 14px; overflow: hidden;
+    border: 1px solid #2c3f57;
+    background:
+      repeating-linear-gradient(115deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 3px),
+      radial-gradient(ellipse 420px 280px at 15% 0%, rgba(255,255,255,0.06), transparent 60%),
+      linear-gradient(160deg, #182535 0%, #101923 55%, #0c141e 100%);
+    box-shadow: 0 25px 55px -22px rgba(0,0,0,0.7);
   }
-  .hp-grid { display: grid; grid-template-columns: 1fr 1fr; }
-  .hp-item { padding: 22px 24px; border-bottom: 1px solid var(--navy-line); border-right: 1px solid var(--navy-line); }
-  .hp-item:nth-child(2n) { border-right: none; }
-  .hp-item:nth-last-child(-n+2) { border-bottom: none; }
-  .hp-label {
-    display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em;
-    text-transform: uppercase; color: var(--silver-dim); margin-bottom: 9px;
+  .hero-panel::before {
+    content: ''; position: absolute; top: -60%; left: -70%; width: 45%; height: 220%;
+    background: linear-gradient(75deg, transparent 0%, rgba(255,255,255,0.09) 45%, rgba(216,184,128,0.4) 50%, rgba(255,255,255,0.09) 55%, transparent 100%);
+    transform: rotate(10deg);
+    animation: hp-shine 2.2s ease-in-out 0.9s 1 both;
+    pointer-events: none;
   }
-  .hp-value { display: block; font-family: var(--font-display); font-size: 1.08rem; font-weight: 500; color: var(--silver-bright); line-height: 1.25; }
+  @keyframes hp-shine {
+    0% { left: -70%; }
+    100% { left: 130%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-panel::before { display: none; }
+  }
+  .hp-list { position: relative; z-index: 1; padding: 10px 22px; }
+  .hp-row { display: flex; align-items: center; gap: 16px; padding: 16px 0; transition: transform 0.2s ease; }
+  .hp-row + .hp-row { border-top: 1px solid rgba(255,255,255,0.07); }
+  .hp-row:hover { transform: translateX(4px); }
+  .hp-icon {
+    width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(216,184,128,0.12); border: 1px solid rgba(216,184,128,0.35);
+    display: flex; align-items: center; justify-content: center; color: var(--brass-bright);
+  }
+  .hp-icon svg { width: 17px; height: 17px; }
+  .hp-text { display: flex; flex-direction: column; gap: 3px; }
+  .hp-label { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--silver-dim); }
+  .hp-value { font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; color: var(--silver-bright); line-height: 1.2; }
 
   @media (max-width: 860px) {
     .hero-content { grid-template-columns: 1fr; padding: 96px 0 56px; }
     .hero-panel { order: -1; }
-    .hp-grid { grid-template-columns: 1fr; }
-    .hp-item { border-right: none !important; }
   }
 
   /* ---------- Section shell ---------- */
@@ -375,11 +395,31 @@
         </div>
       </div>
       <div class="hero-panel">
-        <div class="hp-grid">
-          <div class="hp-item"><span class="hp-label">Fondateur</span><span class="hp-value">Clément Loucel</span></div>
-          <div class="hp-item"><span class="hp-label">Interlocuteur</span><span class="hp-value">Unique, de A à Z</span></div>
-          <div class="hp-item"><span class="hp-label">Basé à</span><span class="hp-value">Région niçoise</span></div>
-          <div class="hp-item"><span class="hp-label">Zone d'intervention</span><span class="hp-value">Toute la France</span></div>
+        <div class="hp-list">
+          <div class="hp-row">
+            <div class="hp-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21c0-3.9-3.6-7-8-7s-8 3.1-8 7"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <div class="hp-text"><span class="hp-label">Fondateur</span><span class="hp-value">Clément Loucel</span></div>
+          </div>
+          <div class="hp-row">
+            <div class="hp-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="9"></circle></svg>
+            </div>
+            <div class="hp-text"><span class="hp-label">Interlocuteur</span><span class="hp-value">Unique, de A à Z</span></div>
+          </div>
+          <div class="hp-row">
+            <div class="hp-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div class="hp-text"><span class="hp-label">Basé à</span><span class="hp-value">Région niçoise</span></div>
+          </div>
+          <div class="hp-row">
+            <div class="hp-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg>
+            </div>
+            <div class="hp-text"><span class="hp-label">Zone d'intervention</span><span class="hp-value">Toute la France</span></div>
+          </div>
         </div>
       </div>
     </div>
