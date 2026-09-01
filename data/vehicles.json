@@ -1,0 +1,49 @@
+{
+  "vehicles": [
+    {
+      "name": "MINI Cooper",
+      "tagline": "Citadine premium, finition à bandes, cédée en dépôt-vente.",
+      "status": "Cédé",
+      "mainImage": "assets/IMG_4755.jpg",
+      "gallery": [
+        { "src": "assets/IMG_4755.jpg", "caption": "MINI Cooper — trois quarts avant" },
+        { "src": "assets/IMG_4753.jpg", "caption": "MINI Cooper — face avant" },
+        { "src": "assets/IMG_4746.jpg", "caption": "MINI Cooper — vue arrière" }
+      ]
+    },
+    {
+      "name": "BMW 320Ci Coupé",
+      "tagline": "Coupé E46, finition M Sport, sourcing et vérification complète.",
+      "status": "Cédé",
+      "mainImage": "assets/IMG_2662.jpg",
+      "gallery": [
+        { "src": "assets/IMG_2662.jpg", "caption": "BMW 320Ci — trois quarts avant" },
+        { "src": "assets/IMG_2683.jpg", "caption": "BMW 320Ci — trois quarts arrière" },
+        { "src": "assets/IMG_2672.jpg", "caption": "BMW 320Ci — intérieur M Sport" }
+      ]
+    },
+    {
+      "name": "Renault Mégane GT",
+      "tagline": "Berline compacte sportive, achat accompagné de A à Z.",
+      "status": "Cédé",
+      "mainImage": "assets/IMG_2112.jpg",
+      "gallery": [
+        { "src": "assets/IMG_2112.jpg", "caption": "Renault Mégane GT — trois quarts avant" },
+        { "src": "assets/IMG_2113.jpg", "caption": "Renault Mégane GT — face avant" },
+        { "src": "assets/IMG_2133.jpg", "caption": "Renault Mégane GT — vue arrière" },
+        { "src": "assets/IMG_2123.jpg", "caption": "Renault Mégane GT — intérieur" }
+      ]
+    },
+    {
+      "name": "BMW F800ST",
+      "tagline": "Routière sportive, dépôt-vente incluant remise en état.",
+      "status": "Cédé",
+      "mainImage": "assets/IMG_4578.jpg",
+      "gallery": [
+        { "src": "assets/IMG_4578.jpg", "caption": "BMW F800ST — trois quarts avant" },
+        { "src": "assets/IMG_4575.jpg", "caption": "BMW F800ST — vue avant" },
+        { "src": "assets/IMG_4581.jpg", "caption": "BMW F800ST — détail échappement" }
+      ]
+    }
+  ]
+}

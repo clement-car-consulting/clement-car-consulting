@@ -1,0 +1,37 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+locale: "fr"
+
+collections:
+  - name: "fleet"
+    label: "Véhicules du site"
+    files:
+      - name: "vehicles"
+        label: "Liste des véhicules affichés"
+        file: "data/vehicles.json"
+        fields:
+          - label: "Véhicules"
+            name: "vehicles"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.status}}"
+            fields:
+              - { label: "Nom du véhicule", name: "name", widget: "string", hint: "Ex : Peugeot 208 GT Line" }
+              - { label: "Description courte", name: "tagline", widget: "string", hint: "Une phrase, affichée sous le nom." }
+              - label: "Statut"
+                name: "status"
+                widget: "select"
+                options: ["Disponible", "Cédé"]
+                default: "Disponible"
+              - { label: "Photo principale", name: "mainImage", widget: "image", hint: "Photo affichée en premier dans la galerie." }
+              - label: "Photos supplémentaires (galerie)"
+                name: "gallery"
+                widget: "list"
+                summary: "{{fields.caption}}"
+                fields:
+                  - { label: "Photo", name: "src", widget: "image" }
+                  - { label: "Légende (optionnel)", name: "caption", widget: "string", required: false }
