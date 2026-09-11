@@ -82,8 +82,21 @@
   body {
     background-image:
       radial-gradient(ellipse 900px 600px at 85% -5%, rgba(176,141,87,0.10), transparent 60%),
-      radial-gradient(ellipse 700px 500px at 0% 10%, rgba(60,90,130,0.14), transparent 55%);
+      radial-gradient(ellipse 700px 500px at 0% 10%, rgba(60,90,130,0.14), transparent 55%),
+      radial-gradient(ellipse 800px 600px at 10% 38%, rgba(60,90,130,0.10), transparent 55%),
+      radial-gradient(ellipse 900px 650px at 95% 55%, rgba(176,141,87,0.07), transparent 55%),
+      radial-gradient(ellipse 800px 600px at 5% 78%, rgba(176,141,87,0.06), transparent 55%),
+      radial-gradient(ellipse 900px 650px at 90% 96%, rgba(60,90,130,0.10), transparent 55%);
     background-repeat: no-repeat;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 4px);
   }
 
   /* ---------- Nav ---------- */
@@ -187,7 +200,12 @@
   }
 
   /* ---------- Section shell ---------- */
-  section { padding: 88px 0; border-bottom: 1px solid var(--navy-line); }
+  section { padding: 88px 0; position: relative; }
+  section:not(:last-of-type)::after {
+    content: '';
+    position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(38,56,80,0.7) 20%, rgba(38,56,80,0.7) 80%, transparent);
+  }
   .section-head { max-width: 60ch; margin-bottom: 52px; }
   .section-head h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.7rem, 3vw, 2.2rem); color: var(--silver-bright); }
   .section-head p { margin-top: 14px; color: var(--silver-muted); font-size: 1.02rem; max-width: 52ch; }
