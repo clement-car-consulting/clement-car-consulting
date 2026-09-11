@@ -100,7 +100,7 @@
     -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none;
   }
   .brand-sub { display: block; font-family: var(--font-body); font-size: 0.62rem; letter-spacing: 0.14em; color: var(--silver-dim); margin-top: 1px; }
-  nav.links { display: flex; gap: 30px; font-size: 0.92rem; color: var(--silver-muted); }
+  nav.links { display: flex; gap: 22px; font-size: 0.9rem; color: var(--silver-muted); }
   nav.links a { text-decoration: none; transition: color 0.15s ease; }
   nav.links a:hover { color: var(--white); }
   .nav-call {
@@ -211,8 +211,9 @@
     position: relative; flex: 0 0 min(80vw, 620px); height: 66vh; min-height: 380px;
     border-radius: 10px; overflow: hidden; border: 1px solid var(--navy-line);
     background: var(--navy-panel); scroll-snap-align: start;
-    transform-style: preserve-3d; will-change: transform, opacity;
+    transform-style: preserve-3d; will-change: transform, opacity, filter;
     box-shadow: 0 30px 60px -25px rgba(0,0,0,0.7);
+    transition: filter 0.25s ease-out;
   }
   .fleet-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.2s ease-out; }
   .fleet-card .tag {
@@ -270,6 +271,20 @@
   .process-num { font-family: var(--font-mono); color: var(--brass); font-size: 0.85rem; }
   .process-step h3 { font-family: var(--font-display); font-weight: 500; font-size: 1.08rem; color: var(--silver-bright); margin: 12px 0 10px; }
   .process-step p { color: var(--silver-muted); font-size: 0.94rem; }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { border-top: 1px solid var(--navy-line); }
+  .faq-item { border-bottom: 1px solid var(--navy-line); }
+  .faq-q {
+    width: 100%; background: none; border: none; text-align: left; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: 22px 4px; font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; color: var(--silver-bright);
+  }
+  .faq-q:hover { color: var(--brass-bright); }
+  .faq-icon { font-family: var(--font-mono); font-size: 1.3rem; color: var(--brass-bright); flex-shrink: 0; transition: transform 0.25s ease; line-height: 1; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+  .faq-a p { color: var(--silver-muted); font-size: 0.96rem; padding: 0 30px 22px 4px; max-width: 65ch; }
   @media (max-width: 860px) {
     .process-grid { grid-template-columns: 1fr; gap: 28px; }
     .process-step { border-left: none; padding-left: 0; border-top: 1px solid var(--navy-line); padding-top: 24px; }
@@ -374,6 +389,7 @@
       <a href="#stock">En stock</a>
       <a href="#fleet">Véhicules cédés</a>
       <a href="#process">Démarche</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </nav>
     <a class="nav-call" href="tel:0687973804">06 87 97 38 04</a>
@@ -478,7 +494,7 @@
     <div class="wrap fleet-intro">
       <div class="section-head reveal" style="margin-bottom: 0;">
         <h2>Des ventes, des profils différents</h2>
-        <p>Un aperçu de véhicules récemment accompagnés par C.C.C — de la citadine premium à la routière. Faites défiler pour les découvrir, cliquez pour agrandir.</p>
+        <p>Un aperçu de véhicules récemment accompagnés par C.C.C, de la citadine premium à la routière sportive. Chaque dossier a ses propres contraintes — budget, délai, modèle précis — et un accompagnement pensé en conséquence. Faites défiler pour les découvrir, cliquez sur une photo pour l'agrandir.</p>
       </div>
     </div>
 
@@ -517,6 +533,57 @@
         <div class="process-num">04</div>
         <h3>Remise des clés</h3>
         <p>Négociation finale, démarches administratives et livraison du véhicule.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="wrap">
+    <div class="section-head reveal">
+      <h2>Questions fréquentes</h2>
+      <p>Ce qu'on demande le plus souvent à C.C.C. Une autre question ? <a href="#contact" style="color: var(--brass-bright);">Écrivez directement</a>.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button type="button" class="faq-q" aria-expanded="false">
+          <span>Travaillez-vous uniquement avec des particuliers ?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Non. C.C.C accompagne aussi bien des particuliers que des professionnels, que ce soit pour un achat ponctuel, une revente, ou une recherche récurrente de véhicules.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button type="button" class="faq-q" aria-expanded="false">
+          <span>Intervenez-vous uniquement dans la région niçoise ?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>C.C.C est basé en région niçoise mais intervient sur toute la France, notamment pour le sourcing, l'import et les recherches de véhicules spécifiques où qu'ils se trouvent.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button type="button" class="faq-q" aria-expanded="false">
+          <span>Combien de temps prend une recherche personnalisée ?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Ça dépend du modèle recherché et de vos critères (budget, kilométrage, finition...). Certaines recherches aboutissent en quelques jours, d'autres demandent plus de patience pour un modèle rare. Le premier échange permet d'estimer un délai réaliste.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button type="button" class="faq-q" aria-expanded="false">
+          <span>Comment fonctionne le dépôt-vente ?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Vous confiez votre véhicule à C.C.C, qui s'occupe de l'annonce, des visites et de la négociation avec les acheteurs potentiels. Vous restez décisionnaire sur le prix final accepté.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button type="button" class="faq-q" aria-expanded="false">
+          <span>Vérifiez-vous l'état des véhicules avant une vente ?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Oui, chaque véhicule fait l'objet d'une vérification de l'historique et d'une inspection avant d'être proposé ou validé, que ce soit pour un achat, un import ou une recherche personnalisée.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button type="button" class="faq-q" aria-expanded="false">
+          <span>Comment se passe un premier contact avec C.C.C ?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Par téléphone, email, ou via le formulaire du site. On échange sur votre projet (besoin, budget, délai) pour définir ensemble la meilleure façon d'avancer.</p></div>
       </div>
     </div>
   </section>
@@ -666,14 +733,18 @@
       var cardCenter = rect.left + rect.width / 2;
       var offset = (cardCenter - viewportCenter) / window.innerWidth;
       var clamped = Math.max(-1, Math.min(1, offset));
-      var rotateY = clamped * -22;
-      var scale = 1 - Math.abs(clamped) * 0.16;
-      var translateZ = -Math.abs(clamped) * 60;
-      var opacity = 1 - Math.abs(clamped) * 0.35;
-      card.style.transform = 'perspective(1400px) rotateY(' + rotateY + 'deg) scale(' + scale + ') translateZ(' + translateZ + 'px)';
-      card.style.opacity = Math.max(0.4, opacity);
+      var abs = Math.abs(clamped);
+      var rotateY = clamped * -9;
+      var scale = 1 - abs * 0.12;
+      var translateY = abs * 26;
+      var blur = abs * 5.5;
+      var saturate = 1 - abs * 0.7;
+      var opacity = 1 - abs * 0.3;
+      card.style.transform = 'perspective(1400px) rotateY(' + rotateY + 'deg) scale(' + scale + ') translateY(' + translateY + 'px)';
+      card.style.filter = 'blur(' + blur.toFixed(1) + 'px) saturate(' + saturate.toFixed(2) + ')';
+      card.style.opacity = Math.max(0.45, opacity);
       var img = card.querySelector('img');
-      if (img) img.style.transform = 'scale(' + (1 + Math.abs(clamped) * 0.12) + ')';
+      if (img) img.style.transform = 'scale(' + (1 + abs * 0.1) + ')';
     });
   }
 
@@ -887,6 +958,31 @@
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowLeft') document.getElementById('lbPrev').click();
     if (e.key === 'ArrowRight') document.getElementById('lbNext').click();
+  });
+
+  /* ---- FAQ accordion ---- */
+  document.querySelectorAll('.faq-item').forEach(function (item) {
+    var btn = item.querySelector('.faq-q');
+    var answer = item.querySelector('.faq-a');
+    btn.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function (openItem) {
+        if (openItem !== item) {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+          openItem.querySelector('.faq-a').style.maxHeight = '0px';
+        }
+      });
+      if (isOpen) {
+        item.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = '0px';
+      } else {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
   });
 
   /* ---- Contact form -> mailto ---- */
